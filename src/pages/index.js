@@ -2,25 +2,27 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const url = "https://api.artic.edu/api/v1/artworks";
+  const url = "https://api.artic.edu/api/v1/artworks/search?q=cats";
 
-  fetch(url)
-    .then((response) => {
-      return response.json();
-      //handle success
-    })
-    .then((data) => {
-      let art = data;
-      JSON.stringify(data);
-    })
+  const [paintings, setPaintings] = useState();
 
-    .catch(() => {
-      //handle failure
-    });
+  useEffect(() => {
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPaintings(data);
+        console.log(paintings);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   return (
     <>
       <Head>
