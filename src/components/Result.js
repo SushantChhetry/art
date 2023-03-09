@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const Result = (prop) => {
-  return (
-    <div>Result</div>
-  )
-}
+  const getImage = (value) => {
+    for (let i = 0; i < value.length; i++) {
+      console.log(value[i].image_id);
+    }
+  };
+  return <div>Result</div>;
+};
 
-export default Result
+export default Result;

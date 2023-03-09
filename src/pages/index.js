@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useState, useEffect } from "react";
+import Result from "@/components/Result";
 
 export default function Home() {
   const url =
@@ -10,16 +11,23 @@ export default function Home() {
 
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [paintings, setPaintings] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const [search, setSearch] = useState("");
 
   //Add objects to paintings with the img address and title using the getImage function
 
-  const getImage = (value) => {
-    for (let i = 0; i < value.length; i++) {
-      console.log(value[i].image_id);
-    }
+  const handleChange = (event) => {
+    //handle input change
+    setSearch(event.target.value);
   };
+
+  const handleSubmit = (event) => {
+    //handle form submit
+    event.preventDefault();
+    console.log(search);
+  };
+
   useEffect(() => {
     fetch(url)
       .then((response) => {
@@ -30,7 +38,6 @@ export default function Home() {
       })
       .then((data) => {
         setData(data);
-        getImage(data.data);
       })
       .catch((err) => {
         console.log(`Error fetching data ${err}`);
@@ -58,11 +65,12 @@ export default function Home() {
       <main className="body-wrapper">
         <h1>Art.</h1>
         <p>Chicago Institute of Art</p>
-        <form>
-          <input type="text" />
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={handleChange} />
           <input type="submit" />
         </form>
-        {console.log(data.data)}
+        {data ? console.log(data.data) : ""}
+        <Result />
       </main>
     </>
   );
