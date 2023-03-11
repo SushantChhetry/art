@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Result from "@/components/Result";
 
 export default function Home() {
@@ -13,19 +13,15 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [search, setSearch] = useState("");
+  const search = useRef(""); //used to avoid unncessary rendering
+  const [query, setQuery] = useState("");
 
   //Add objects to paintings with the img address and title using the getImage function
-
-  const handleChange = (event) => {
-    //handle input change
-    setSearch(event.target.value);
-  };
 
   const handleSubmit = (event) => {
     //handle form submit
     event.preventDefault();
-    console.log(search);
+    setQuery(search.current.value);
   };
 
   useEffect(() => {
@@ -46,7 +42,7 @@ export default function Home() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [query]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -66,11 +62,10 @@ export default function Home() {
         <h1>Art.</h1>
         <p>Chicago Institute of Art</p>
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleChange} />
+          <input type="text" ref={search} />
           <input type="submit" />
         </form>
-        {data ? console.log(data.data) : ""}
-        <Result />
+        <Result data={data} />
       </main>
     </>
   );
