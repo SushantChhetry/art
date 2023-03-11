@@ -27,27 +27,25 @@ export default function Home() {
 
   useEffect(() => {
     url = `https://api.artic.edu/api/v1/artworks/search?q=${query}&fields=id,title,image_id`;
-    console.log(url);
-    if (!firstRender) {
-      fetch(url)
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-          throw response;
-        })
-        .then((data) => {
-          console.log(url);
-          setData(data);
-        })
-        .catch((err) => {
-          console.log(`Error fetching data ${err}`);
-          setError(err);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
+    fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((data) => {
+        console.log(data);
+        console.log(url);
+        setData(data);
+      })
+      .catch((err) => {
+        console.log(`Error fetching data ${err}`);
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [query]);
 
   if (loading) {
@@ -71,7 +69,6 @@ export default function Home() {
           <input type="text" ref={search} />
           <input type="submit" />
         </form>
-        {console.log(data)}
         <Result data={data} />
       </main>
     </>
