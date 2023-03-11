@@ -14,6 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const search = useRef(""); //used to avoid unncessary rendering
+  const firstRender = useRef(true);
   const [query, setQuery] = useState("");
 
   //Add objects to paintings with the img address and title using the getImage function
@@ -21,27 +22,30 @@ export default function Home() {
   const handleSubmit = (event) => {
     //handle form submit
     event.preventDefault();
+    firstRender.current = false;
     setQuery(search.current.value);
   };
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw response;
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .catch((err) => {
-        console.log(`Error fetching data ${err}`);
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    if (!firstRender) {
+      fetch(url)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw response;
+        })
+        .then((data) => {
+          setData(data);
+        })
+        .catch((err) => {
+          console.log(`Error fetching data ${err}`);
+          setError(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   }, [query]);
 
   if (loading) {
