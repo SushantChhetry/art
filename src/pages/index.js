@@ -6,9 +6,6 @@ import { useState, useEffect, useRef } from "react";
 import Result from "@/components/Result";
 
 export default function Home() {
-  const url =
-    "https://api.artic.edu/api/v1/artworks/search?q=abstract&fields=id,title,image_id";
-
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -16,6 +13,8 @@ export default function Home() {
   const search = useRef(""); //used to avoid unncessary rendering
   const firstRender = useRef(true);
   const [query, setQuery] = useState("");
+
+  let url = `https://api.artic.edu/api/v1/artworks/search?q=${query}&fields=id,title,image_id`;
 
   //Add objects to paintings with the img address and title using the getImage function
 
@@ -27,6 +26,8 @@ export default function Home() {
   };
 
   useEffect(() => {
+    url = `https://api.artic.edu/api/v1/artworks/search?q=${query}&fields=id,title,image_id`;
+    console.log(url);
     if (!firstRender) {
       fetch(url)
         .then((response) => {
@@ -36,6 +37,7 @@ export default function Home() {
           throw response;
         })
         .then((data) => {
+          console.log(url);
           setData(data);
         })
         .catch((err) => {
@@ -69,6 +71,7 @@ export default function Home() {
           <input type="text" ref={search} />
           <input type="submit" />
         </form>
+        {console.log(data)}
         <Result data={data} />
       </main>
     </>

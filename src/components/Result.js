@@ -7,7 +7,7 @@ const Result = ({ data }) => {
       console.log(value[i].image_id);
     }
   };
-  return <div>{console.log(paintings)}</div>;
+  return <div>{console.log(data)}</div>;
 };
 
 export default Result;
