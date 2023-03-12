@@ -4,11 +4,51 @@
 *::before,
 *::after {
     box-sizing: border-box;
-font-family: 'Roboto', sans-serif;
+font-family: "Montserrat", sans-serif;
 }
 
 h1{
     margin: 1vh 0;
+}
+
+/* set the font size */
+h1 {
+    font-size: 48px;
+}
+
+/* set the font weight */
+h2 {
+    font-weight: 700;
+}
+
+/* set the font color */
+p {
+    color: #333;
+}
+
+/* add font styling */
+em {
+    font-style: italic;
+}
+
+/* set letter spacing */
+span {
+    letter-spacing: 2px;
+}
+
+/* set line height */
+ul {
+    line-height: 1.5;
+}
+
+/* set text decoration */
+a {
+    text-decoration: none;
+}
+
+/* add text shadow */
+h3 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .body-wrapper{
@@ -81,4 +121,12 @@ h1{
 
 .custom-button:hover {
     background-color: #006f8a;
+}
+
+.paintings-wrapper {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin: 3vw 0 0 0;
 }

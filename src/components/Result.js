@@ -22,7 +22,7 @@ const Result = (props) => {
             const imgSrc = `https://www.artic.edu/iiif/2/${val["image_id"]}/full/843,/0/default.jpg`;
             return (
               <div className="paintings-wrapper">
-                <h4>{val["title"]}</h4>
+                <h3>{val["title"]}</h3>
                 <img src={imgSrc} alt={val["title"]} className="painting" />
               </div>
             );
