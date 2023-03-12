@@ -63,9 +63,14 @@ export default function Home() {
       <main className="body-wrapper">
         <h1>Art.</h1>
         <p>Chicago Institute of Art</p>
-        <form onSubmit={handleSubmit}>
-          <input type="text" ref={search} />
-          <input type="submit" />
+        <form onSubmit={handleSubmit} className="custom-form">
+          <input
+            type="text"
+            ref={search}
+            placeholder="Search"
+            className="custom-input"
+          />
+          <input type="submit" className="custom-button" />
         </form>
         <Result data={data} />
       </main>
