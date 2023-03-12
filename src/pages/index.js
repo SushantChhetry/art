@@ -35,9 +35,7 @@ export default function Home() {
         throw response;
       })
       .then((data) => {
-        console.log(data);
-        console.log(url);
-        setData(data);
+        setData(data["data"]);
       })
       .catch((err) => {
         console.log(`Error fetching data ${err}`);
