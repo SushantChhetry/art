@@ -21,9 +21,9 @@ const Result = (props) => {
             console.log(val["title"]);
             const imgSrc = `https://www.artic.edu/iiif/2/${val["image_id"]}/full/843,/0/default.jpg`;
             return (
-              <div>
+              <div className="paintings-wrapper">
                 <h4>{val["title"]}</h4>
-                <img src={imgSrc} alt="tests" />
+                <img src={imgSrc} alt={val["title"]} className="painting" />
               </div>
             );
           })
