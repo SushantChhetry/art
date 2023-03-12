@@ -18,20 +18,16 @@ const Result = (props) => {
       {props.data
         ? props.data.map((val) => {
             console.log(val["image_id"]);
+            console.log(val["title"]);
             const imgSrc = `https://www.artic.edu/iiif/2/${val["image_id"]}/full/843,/0/default.jpg`;
-            return <img src={imgSrc} alt="tests" />;
+            return (
+              <div>
+                <h4>{val["title"]}</h4>
+                <img src={imgSrc} alt="tests" />
+              </div>
+            );
           })
         : ""}
-      <div className="img-warpper">
-        <img
-          src="https://www.artic.edu/iiif/2/e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9/full/843,/0/default.jpg"
-          alt="tests"
-        />
-        <img
-          src="https://www.artic.edu/iiif/2/e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9/full/843,/0/default.jpg"
-          alt="tests"
-        />
-      </div>
     </div>
   );
 };
