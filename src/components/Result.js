@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Result = (props) => {
-  const [paintings, setPaintings] = useState([]);
-
-  const [imgId, setImgId] = useState("");
-
   useEffect(() => {}, []);
-
-  //map thrpugh the data, extract the img id and put it in the src, extract the title, return them for rendering
-
-  const imgUrl = `https://www.artic.edu/iiif/2/${imgId}/full/843,/0/default.jpg`;
 
   return (
     <div>

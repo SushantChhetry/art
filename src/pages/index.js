@@ -61,18 +61,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="body-wrapper">
-        <h1>Art.</h1>
-        <p>Chicago Institute of Art</p>
-        <form onSubmit={handleSubmit} className="custom-form">
-          <input
-            type="text"
-            ref={search}
-            placeholder="Search"
-            className="custom-input"
-          />
-          <input type="submit" className="custom-button" />
-        </form>
-        <Result data={data} />
+        <div className="left"></div>
+        <div className="middle">
+          <h1>Art.</h1>
+          <p>Chicago Institute of Art</p>
+          <form onSubmit={handleSubmit} className="custom-form">
+            <input
+              type="text"
+              ref={search}
+              placeholder="Search"
+              className="custom-input"
+            />
+            <input type="submit" className="custom-button" />
+          </form>
+          <Result data={data} />
+        </div>
+        <div className="right"></div>
       </main>
     </>
   );
