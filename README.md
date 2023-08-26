@@ -1,5 +1,5 @@
 # Art.
-
+tets
 ![image](https://user-images.githubusercontent.com/60019004/224583440-9c54eb9f-b1a5-4ee6-9986-5b7174f3f9d7.png)
 
 This project is a website that uses React and Fetch to get paintings from a [Art Institute of Chicago API](https://api.artic.edu/docs/) and display it in a user-friendly way.
